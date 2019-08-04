@@ -7,7 +7,7 @@ import javax.ws.rs.core.Response;
 
 import com.google.gson.Gson;
 
-import br.com.teste.webapi.teste_webapi.exceptions.BaseError;
+import br.com.teste.webapi.teste_webapi.exceptions.BaseException;
 
 public class BaseREST {
 
@@ -28,7 +28,7 @@ public class BaseREST {
 	
 	
 	public Response okWithErrors(Exception object) {
-		BaseError error = new BaseError(object.getLocalizedMessage());
+		BaseException error = new BaseException(object.getMessage());
 		String json = gson.toJson(error);
     	return Response.ok(json, MediaType.APPLICATION_JSON).build();
 	}
